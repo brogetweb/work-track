@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+  --color-paper: #f3f0e8;
+  --color-ink: #14221c;
+  --color-accent: #0f766e;
+  --color-line: #e4ddd0;
+  --color-card: #fffcf7;
+  --color-muted: #5c6a63;
+  --color-sidebar: #101815;
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 420px at 100% -8%, rgba(15, 118, 110, 0.09), transparent 60%),
+    linear-gradient(180deg, #f7f4ee 0%, var(--color-paper) 280px);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection { background: #cdebe4; }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+input, select, textarea, button { font: inherit; }
+
+.font-serif { font-family: var(--font-serif); }
+
+@keyframes drawer-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.drawer-in { animation: drawer-in 220ms ease-out; }
+
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar { width: 8px; }
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 99px;
+}
+
+main table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+main table th,
+main table td {
+  border: 1px solid #b4b4b4;
+  padding: 6px 8px;
+  background: #fff;
+  color: #1a1a1a;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-align: left;
+  text-transform: none;
+  vertical-align: middle;
+}
+
+main table thead th {
+  background: #0f766e;
+  color: #fff;
+  border-color: #0b5f58;
+  font-weight: 700;
+}
+
+main table tbody tr:nth-child(odd) td {
+  background: #ffffff;
+}
+
+main table tbody tr:nth-child(even) td {
+  background: #e7f6f2;
+}
+
+main table tbody tr:hover td {
+  background: #c9efe6;
+}
+
+main table td.tone-good,
+main table tbody tr:nth-child(odd) td.tone-good,
+main table tbody tr:nth-child(even) td.tone-good { background: #86efac; color: #14532d; font-weight: 700; }
+main table td.tone-warn,
+main table tbody tr:nth-child(odd) td.tone-warn,
+main table tbody tr:nth-child(even) td.tone-warn { background: #fcd34d; color: #78350f; font-weight: 700; }
+main table td.tone-bad,
+main table tbody tr:nth-child(odd) td.tone-bad,
+main table tbody tr:nth-child(even) td.tone-bad { background: #fca5a5; color: #7f1d1d; font-weight: 700; }
+main table td.tone-info,
+main table tbody tr:nth-child(odd) td.tone-info,
+main table tbody tr:nth-child(even) td.tone-info { background: #93c5fd; color: #1e3a8a; font-weight: 700; }
+main table td.tone-hot,
+main table tbody tr:nth-child(odd) td.tone-hot,
+main table tbody tr:nth-child(even) td.tone-hot { background: #fdba74; color: #7c2d12; font-weight: 700; }
+
+main table tbody tr:hover td.tone-good { background: #4ade80; }
+main table tbody tr:hover td.tone-warn { background: #fbbf24; }
+main table tbody tr:hover td.tone-bad { background: #f87171; }
+main table tbody tr:hover td.tone-info { background: #60a5fa; }
+main table tbody tr:hover td.tone-hot { background: #fb923c; }
+
+main table td a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

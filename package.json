@@ -1,0 +1,12 @@
+{
+  "name": "worktrack",
+  "private": true,
+  "scripts": {
+    "mongo": "docker compose up -d",
+    "dev": "concurrently -n api,web -c teal,amber \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "start": "concurrently -n api,web -c teal,amber \"npm run start --prefix backend\" \"npm run start --prefix frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
