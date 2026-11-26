@@ -115,6 +115,10 @@ export async function seedIfEmpty() {
     console.log('Demo data already present');
     return false;
   }
+  if (await User.exists({})) {
+    console.log('Workspace already has people. Demo seed skipped.');
+    return bootstrapProduction();
+  }
 
   const password = await bcrypt.hash('Worktrack@123', 10);
   await Permission.insertMany(PERMISSIONS);

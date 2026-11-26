@@ -6,17 +6,11 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AppContext';
 import { Button, Input } from '@/components/ui';
 
-const demos = [
-  ['Super Admin', 'Every department and every report', 'superadmin@worktrack.app'],
-  ['Team Leader', 'The people assigned to them', 'divya.menon@worktrack.app'],
-  ['Employee', 'Their own tasks and daily report', 'aisha.khan@worktrack.app'],
-];
-
 export default function LoginPage() {
   const { ready, user, login } = useAuth();
   const router = useRouter();
-  const [email, setEmail] = useState('aisha.khan@worktrack.app');
-  const [password, setPassword] = useState('Worktrack@123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -74,30 +68,6 @@ export default function LoginPage() {
             </div>
             {error && <p className="mt-3 text-sm text-rose-700">{error}</p>}
             <Button className="mt-4 w-full rounded-none" type="submit" disabled={busy}>{busy ? 'Signing in…' : 'Enter workspace'}</Button>
-
-            <div className="mt-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">Demo accounts · Worktrack@123</p>
-              <div className="mt-2 overflow-hidden border border-[#b4b4b4]">
-                {demos.map(([label, detail, value]) => {
-                  const active = email === value;
-                  return (
-                    <button
-                      key={value}
-                      className="flex w-full cursor-pointer items-center justify-between gap-3 border-b border-[#b4b4b4] px-3 py-2 text-left last:border-b-0"
-                      style={{ background: active ? '#0f766e' : '#fff', color: active ? '#fff' : '#14221c' }}
-                      type="button"
-                      onClick={() => { setEmail(value); setPassword('Worktrack@123'); }}
-                    >
-                      <span>
-                        <span className="block text-sm font-bold">{label}</span>
-                        <span className="block text-xs" style={{ color: active ? 'rgba(255,255,255,0.8)' : '#5c6a63' }}>{detail}</span>
-                      </span>
-                      <span className="text-[11px] font-bold uppercase">{active ? 'Selected' : 'Use'}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
           </form>
         </section>
       </div>
